@@ -11,6 +11,14 @@ def linear_interpolation(wave_table, idx):
     
     return truncated_idx_weight * wave_table[truncated_idx] + next_idx_weight * wave_table[next_idx]
 
+def fade(signal, fade_length=1000):
+    fade_in = (1-np.cos(np.linspace(0, np.pi, fade_length))) * 0.5
+    fade_out = np.flip(fade_in)
+    signal[:fade_length] = np.multiply(fade_in, signal[:fade_length:])
+    signal[-fade_length:] = np.multiply(fade_out, signal[-fade_length:])
+    
+    return signal
+    
 
 def main():
     sample_rate = 44100
@@ -38,6 +46,8 @@ def main():
     # /(n+1)-n/2     - this was part of the previous line when it was inside the func, which then ramps the gain up
     amplitude = 10 ** (gain/20)
     output *= amplitude
+    
+    output = fade(output)
     
     
     
