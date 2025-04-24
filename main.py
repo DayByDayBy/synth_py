@@ -20,7 +20,7 @@ def main():
     
     for n in range(output.shape[0]):
         output[n] = wave_table[int(np.floor(idx))]
-        idx += (idxIncr+34)/300
+        idx += idxIncr
         idx %= wavetable_length
     
     wav.write('al_sine432hz.wav', sample_rate, output.astype(np.float32))
