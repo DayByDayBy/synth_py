@@ -34,9 +34,10 @@ def main():
         output[n] = linear_interpolation(wave_table, idx) 
         idx += idxIncr
         idx %= wavetable_length
-        gain = -20/(n+1)-n/2
-        amplitude = 10 ** (gain/20)
-        output *= amplitude
+    gain = -20
+    # /(n+1)-n/2     - this was part of the previous line when it was inside the func, which then ramps the gain up
+    amplitude = 10 ** (gain/20)
+    output *= amplitude
     
     
     
