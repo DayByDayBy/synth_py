@@ -18,13 +18,17 @@ def fade(signal, fade_length=1000):
     signal[-fade_length:] = np.multiply(fade_out, signal[-fade_length:])
     
     return signal
-    
+
+
+def saw_tooth(x):
+    return (x + np.pi) / np.pi % 2 -1
+        
 
 def main():
     sample_rate = 44100
-    f = 432
+    f = 216
     t = 3
-    waveform = np.sin
+    waveform = saw_tooth
     
     wavetable_length = 64
     wave_table = np.zeros((wavetable_length,))
@@ -51,7 +55,7 @@ def main():
     
     
     
-    wav.write('sine432hz_interp.wav', sample_rate, output.astype(np.float32))
+    wav.write('saw432hz.wav', sample_rate, output.astype(np.float32))
     
     
 if __name__ == "__main__":
