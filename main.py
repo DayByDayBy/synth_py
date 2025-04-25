@@ -55,7 +55,7 @@ def main():
     
     
     
-    wav.write('saw432hz.wav', sample_rate, output.astype(np.float32))
+    wav.write('saw216hz.wav', sample_rate, output.astype(np.float32))
     
     
 if __name__ == "__main__":
