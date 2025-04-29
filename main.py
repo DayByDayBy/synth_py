@@ -1,5 +1,6 @@
 import numpy as np
 import scipy.io.wavfile as wav
+import pandas as pd
 
 
 def linear_interpolation(wave_table, idx):
